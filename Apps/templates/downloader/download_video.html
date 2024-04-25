@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-image: url("/static/images/piotr-cichosz-NhRk-907Ayc-unsplash.jpg");
+            background-color: black;
+            background-position: center;
+            background-size: cover;
+            height: 300px;
+        }
+
+        input[type="url" i] {
+            padding-block: 1px;
+            padding-inline: 2px;
+            height: 35px;
+            width: 50%;
+            font-size: 20px;
+            border-radius: 10px;
+            border: none;
+            color: red;
+        }
+
+        label {
+            cursor: default;
+            color: white;
+            font-size: 20px;
+            padding-left: 100px;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .btn a:hover {
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <marquee style="color: rgb(219, 20, 20);" behavior="" direction="right">Latest Youtube Videos All Faveroit Music And Webseries</marquee>
+    <h1 style="text-align: center; color: red; font-size: 50px;">Download Youtube Videos</h1>
+
+    <form style="padding-left: 200px;" action="{% url 'download_video' %}" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit" class="btn"
+            style="margin-top: 100px; margin-left: 500px; height: 30px; width: 10%; border: none; border-radius: 10px; background-color: rgb(152, 13, 68);"><a
+                href="">Download</a> </button>
+    </form>
+    <div class="container" style="padding-left: 100px; margin-top: 280px; color: white;">
+        <h2 style="color: red;">Downloaded  Youtube Videos Keep Enjoy :--</h2>
+        <ul>
+            {% for video in video %}
+            <li>{{ video.title }} - {{ video.video_id }} - {{ video.url }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    
+
+</body>
+
+</html>
